@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,78 @@ namespace WpfSMSApp.View
         public LoginView()
         {
             InitializeComponent();
+            Commons.LOGGER.Info("LOGIN 뷰 초기화!");
+        }
+
+        // async 필요
+        private async void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await this.ShowMessageAsync("종료","종료하시겠습니까?"
+                ,MessageDialogStyle.AffirmativeAndNegative,null); // await 비동기
+
+            if (result == MessageDialogResult.Affirmative)
+                Application.Current.Shutdown(); //프로그램 종료
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            TxtUserEmail.Focus();
+
+            LblResult.Visibility = Visibility.Hidden;
+        }
+
+        private void TxtUserEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                TxtPassword.Focus();
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                BtnLogin_Click(sender, e);
+        }
+
+        private async void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            LblResult.Visibility = Visibility.Hidden; //결과 숨김
+
+            if(string.IsNullOrEmpty(TxtUserEmail.Text) || string.IsNullOrEmpty(TxtPassword.Password))
+            {
+                LblResult.Visibility = Visibility.Visible;
+                LblResult.Content = "아이디나 패스워드를 입력하세요!!";
+                Commons.LOGGER.Warn("아이디/패스워드 미입력 접속 시도");
+                return;
+            }
+            try
+            {
+                var email = TxtUserEmail.Text;
+                var password = TxtPassword.Password;
+                var isOurUser = Logic.DataAcess.GetUsers()
+                                .Where(u => u.UserEmail.Equals(email) && u.UserPassword.Equals(password) 
+                                && u.UserActivated == true).Count();
+
+                if(isOurUser == 0)
+                {
+                    LblResult.Visibility = Visibility.Visible;
+                    LblResult.Content = "사용자가 존재하지않습니다.";
+                    Commons.LOGGER.Warn("아이디/패스워드 불일치");
+                    return;
+                }
+                else
+                {
+                    //접속처리
+                    Commons.LOGINED_USER = Logic.DataAcess.GetUsers().Where(u => u.UserEmail.Equals(email)).FirstOrDefault();
+                    Commons.LOGGER.Info($"{email} 접속성공");
+                    this.Visibility = Visibility.Hidden;
+                }
+            }
+            catch (Exception ex)
+            {
+                //예외처리
+                Commons.LOGGER.Error($"에외발생 : {ex}");
+                await this.ShowMessageAsync("예외", $"예외발생 {ex}");
+            }
         }
     }
 }

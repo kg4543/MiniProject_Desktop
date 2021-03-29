@@ -9,10 +9,10 @@
     xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     mc:Ignorable="d"
     Title="Stock Management System" Height="700" Width="1200"
+    Icon="/Resources/stock.png"
     WindowStartupLocation="CenterScreen"
     ContentRendered="MetroWindow_ContentRendered">
-    <!--Icon="/Resources/stock.png"-->
-    
+
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="70">
             <Grid.ColumnDefinitions>
