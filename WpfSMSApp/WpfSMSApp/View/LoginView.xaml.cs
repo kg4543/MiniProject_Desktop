@@ -31,10 +31,13 @@ namespace WpfSMSApp.View
         private async void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             var result = await this.ShowMessageAsync("종료","종료하시겠습니까?"
-                ,MessageDialogStyle.AffirmativeAndNegative,null); // await 비동기
+                                                     ,MessageDialogStyle.AffirmativeAndNegative,null); // await 비동기
 
             if (result == MessageDialogResult.Affirmative)
+            {
+                Commons.LOGGER.Info("프로그램 종료");
                 Application.Current.Shutdown(); //프로그램 종료
+            }
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)

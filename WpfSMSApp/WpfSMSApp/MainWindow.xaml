@@ -11,7 +11,14 @@
     Title="Stock Management System" Height="700" Width="1200"
     Icon="/Resources/stock.png"
     WindowStartupLocation="CenterScreen"
-    ContentRendered="MetroWindow_ContentRendered">
+    ContentRendered="MetroWindow_ContentRendered"
+    Activated="MetroWindow_Activated">
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button x:Name="BtnLoginedID"/>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
 
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="70">
@@ -106,7 +113,8 @@
             <Button x:Name="BtnAccount" Content="계정" 
                     Grid.Column="6" Margin="5,10"
                     FontSize="14"  
-                    Foreground="White" Background="CornflowerBlue">
+                    Foreground="White" Background="CornflowerBlue"
+                    Click="BtnAccount_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -119,7 +127,8 @@
             <Button x:Name="BtnLogOut" Content="로그아웃" 
                     Grid.Column="7" Margin="5,10"
                     FontSize="14"  
-                    Foreground="White" Background="Gray">
+                    Foreground="White" Background="Gray"
+                    Click="BtnLogOut_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -131,7 +140,7 @@
             </Button>
         </Grid>
         <Grid Background="WhiteSmoke">
-            <ContentControl x:Name="ActiveControl" /> <!-- 화면 전환 -->
+            <Frame x:Name="ActiveControl" /> <!-- 화면 전환 -->
         </Grid>
     </DockPanel>
 </mah:MetroWindow>
