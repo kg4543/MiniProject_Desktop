@@ -11,7 +11,7 @@
     Background="White"
     Loaded="Page_Loaded">
     <Page.Resources>
-        <Style TargetType="Label"> <!--x:type-->
+        <Style TargetType="Label">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
