@@ -51,7 +51,7 @@ namespace WpfSMSApp.View.Account
                 TxtUserSurName.Text = user.UserSurname.ToString(); 
                 TxtUserName.Text = user.UserName.ToString(); 
                 TxtUserEmail.Text = user.UserEmail.ToString();
-                TxtUserPassword.Password = user.UserPassword.ToString();
+                TxtUserPassword.Password = user.UserPassword.ToString(); // 문제
                 CboUserAdmin.SelectedIndex = user.UserAdmin == false ? 0 : 1;
                 CboUserActivated.SelectedIndex = user.UserActivated == false ? 0 : 1;
 

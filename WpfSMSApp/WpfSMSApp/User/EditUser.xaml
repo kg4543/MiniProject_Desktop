@@ -1,5 +1,5 @@
 ﻿<Page 
-    x:Class="WpfSMSApp.View.User.AddUser"
+    x:Class="WpfSMSApp.View.User.EditUser"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:WpfSMSApp.View.User"
     mc:Ignorable="d" 
     d:DesignHeight="630" d:DesignWidth="1200"
-    Title="AddUser"
+    Title="EditUser"
     Background="White"
     Loaded="Page_Loaded">
     <Page.Resources>
@@ -32,21 +32,37 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         
         <!--제목입력-->
-        <Label Content="사용자 정보 입력"
+        <Label Content="사용자 정보 수정"
                Grid.Row="0" Grid.Column="1"
                FontSize="26" FontWeight="ExtraBold"
                VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
         
-        <!--버튼영역-->
-        <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"/>
+        <!--데이터 그리드 영역-->
+        <DataGrid x:Name="GrdData" Grid.Row="1" Grid.Column="1"
+                      AutoGenerateColumns="False" SelectionUnit="FullRow"
+                      GridLinesVisibility="Vertical"
+                      Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
+                      ItemsSource="{Binding}" SelectedCellsChanged="GrdData_SelectedCellsChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding UserID}" Header="순번" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserIdentityNumber}" Header="사번" Width="1.2*" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserSurname}" Header="성" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserName}" Header="이름" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserEmail}" Header="이메일" Width="2*" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserAdmin}" Header="관리자 권한" Width="83" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserActivated}" Header="활성 권한" Width="72" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
         <!--컨텐츠영역-->
-        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+        <Grid Grid.Row="1" Grid.Column="2" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
@@ -78,7 +94,7 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                 <TextBox x:Name="TxtUserIdentityNumber" 
                          Margin="3" Width="200"
-                         FontSize="14"/>
+                         FontSize="14" IsReadOnly="True"/>
                 <TextBlock x:Name="LblUserIdentityNumber" Text="Error Message"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
@@ -125,15 +141,15 @@
         </Grid>
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
                     Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="BtnAdd" Content="추가"
+            <Button x:Name="BtnEdit" Content="수정"
                     Height="50" Width="120" Margin="10,0" FontSize="14"
                     Foreground="White" Background="CornflowerBlue"
-                    Click="BtnAdd_Click">
+                    Click="BtnEdit_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding}" Margin="5, 0" VerticalAlignment="Center" />
-                            <Image Source="/Resources/sign_add.png" Width="24" Height="24"/>
+                            <Image Source="/Resources/sign_check.png" Width="24" Height="24"/>
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>    
