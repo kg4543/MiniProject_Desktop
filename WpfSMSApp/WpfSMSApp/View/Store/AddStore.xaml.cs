@@ -23,7 +23,7 @@ namespace WpfSMSApp.View.Store
         {
             try
             {
-                LblUserIdentityNumber.Visibility = LblUserSurName.Visibility = Visibility.Hidden;
+                LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
 
                 //콤보박스 초기화
                 List<string> comboValues = new List<string>
@@ -32,7 +32,7 @@ namespace WpfSMSApp.View.Store
                     "True" // 1
                 };
 
-                TxtUserID.Text = "";
+                TxtStoreID.Text = "";
 
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace WpfSMSApp.View.Store
         {
             bool isValid = true; //입력된 값이 모두 만족하는지 판별하는 플래그
 
-            LblUserIdentityNumber.Visibility = LblUserSurName.Visibility = Visibility.Hidden;
+            LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
 
             var user = new Model.User();
 
@@ -54,8 +54,8 @@ namespace WpfSMSApp.View.Store
 
             if (isValid)
             {
-                user.UserIdentityNumber = TxtUserIdentityNumber.Text;
-                user.UserSurname = TxtUserSurName.Text;
+                user.UserIdentityNumber = TxtStoreName.Text;
+                user.UserSurname = TxtStoreLocation.Text;
 
                 try
                 {
@@ -88,27 +88,27 @@ namespace WpfSMSApp.View.Store
         {
             bool isValid = true;
 
-            if (string.IsNullOrEmpty(TxtUserIdentityNumber.Text))
+            if (string.IsNullOrEmpty(TxtStoreName.Text))
             {
-                LblUserIdentityNumber.Visibility = Visibility.Visible;
-                LblUserIdentityNumber.Text = "사번을 입력하세요";
+                LblStoreName.Visibility = Visibility.Visible;
+                LblStoreName.Text = "사번을 입력하세요";
                 isValid = false;
             }
             else
             {
-                var cnt = Logic.DataAcess.GetUsers().Where(u => u.UserIdentityNumber.Equals(TxtUserIdentityNumber.Text)).Count();
+                var cnt = Logic.DataAcess.GetUsers().Where(u => u.UserIdentityNumber.Equals(TxtStoreName.Text)).Count();
                 if (cnt > 0)
                 {
-                    LblUserIdentityNumber.Visibility = Visibility.Visible;
-                    LblUserIdentityNumber.Text = "이미 등록된 사번입니다.";
+                    LblStoreName.Visibility = Visibility.Visible;
+                    LblStoreName.Text = "이미 등록된 사번입니다.";
                     isValid = false;
                 }
             }
 
-            if (string.IsNullOrEmpty(TxtUserSurName.Text))
+            if (string.IsNullOrEmpty(TxtStoreLocation.Text))
             {
-                LblUserSurName.Visibility = Visibility.Visible;
-                LblUserSurName.Text = "이름(성)을 입력하세요";
+                LblStoreLocation.Visibility = Visibility.Visible;
+                LblStoreLocation.Text = "이름(성)을 입력하세요";
                 isValid = false;
             }
 
