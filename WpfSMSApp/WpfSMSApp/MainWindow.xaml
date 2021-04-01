@@ -74,7 +74,8 @@
             <Button x:Name="BtnStore" Content="창고" 
                     Grid.Column="3" Margin="5,10"
                     FontSize="14"  
-                    Foreground="White" Background="CadetBlue">
+                    Foreground="White" Background="CadetBlue"
+                    Click="BtnStore_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

@@ -59,7 +59,7 @@ namespace WpfSMSApp.View.Account
             }
             catch (Exception ex)
             {
-                Commons.LOGGER.Error($"예외발생 MyAccount Loaded : {ex}");
+                Commons.LOGGER.Error($"예외발생 EditAccount Loaded : {ex}");
                 throw ex;
             }
         }

@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:local="clr-namespace:WpfSMSApp.View.Account"
+    xmlns:local="clr-namespace:WpfSMSApp.View.Account" 
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     mc:Ignorable="d" 
     d:DesignHeight="630" d:DesignWidth="1200"
     Title="EditAccount"
@@ -133,7 +134,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding}" Margin="5, 0" VerticalAlignment="Center" />
-                            <Image Source="/Resources/sign_check.png" Width="24" Height="24"/>
+                            <iconPacks:PackIconFeatherIcons Kind="Edit" Width = "24" Height="24" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>    
@@ -146,7 +147,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding}" Margin="5, 0" VerticalAlignment="Center" />
-                            <Image Source="/Resources/back_arrow.png" Width="24" Height="24"/>
+                            <iconPacks:PackIconTypicons Kind="ArrowBack" Width="24" Height="24"/>
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>    
