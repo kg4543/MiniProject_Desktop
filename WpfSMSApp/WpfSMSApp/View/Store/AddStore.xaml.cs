@@ -9,9 +9,7 @@ using System.Windows.Navigation;
 
 namespace WpfSMSApp.View.Store
 {
-    /// <summary>
-    /// MyAccount.xaml에 대한 상호 작용 논리
-    /// </summary>
+    
     public partial class AddStore : Page
     {
         public AddStore()
