@@ -1,5 +1,5 @@
 ﻿<Page 
-    x:Class="WpfSMSApp.View.Store.AddStore"
+    x:Class="WpfSMSApp.View.Store.EditStore"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     mc:Ignorable="d" 
     d:DesignHeight="630" d:DesignWidth="1200"
-    Title="AddStore"
+    Title="EditStore"
     Background="White"
     Loaded="Page_Loaded">
     <Page.Resources>
@@ -39,7 +39,7 @@
         </Grid.ColumnDefinitions>
         
         <!--제목입력-->
-        <Label Content="창고 정보 입력"
+        <Label Content="창고 정보 수정"
                Grid.Row="0" Grid.Column="1"
                FontSize="26" FontWeight="ExtraBold"
                VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
@@ -86,15 +86,15 @@
         </Grid>
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
                     Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="BtnAdd" Content="추가"
+            <Button x:Name="BtnEdit" Content="수정"
                     Height="50" Width="120" Margin="10,0" FontSize="14"
                     Foreground="White" Background="CornflowerBlue"
-                    Click="BtnAdd_Click">
+                    Click="BtnEdit_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding}" Margin="5, 0" VerticalAlignment="Center" />
-                            <iconPacks:PackIconMaterialDesign Kind="AddCircle" Width="24" Height="24"/>
+                            <iconPacks:PackIconFeatherIcons Kind="Edit" Width = "24" Height="24" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>    

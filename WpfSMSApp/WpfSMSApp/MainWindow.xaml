@@ -12,7 +12,8 @@
     Icon="/Resources/stock.png"
     WindowStartupLocation="CenterScreen"
     ContentRendered="MetroWindow_ContentRendered"
-    Activated="MetroWindow_Activated">
+    Activated="MetroWindow_Activated"
+    Closing="MetroWindow_Closing">
 
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>

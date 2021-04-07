@@ -73,7 +73,7 @@
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
-            <Button x:Name="BtnExportExcel" Content="PDF Export"
+            <Button x:Name="BtnExportExcel" Content="Excel Export"
                     Height="50" Margin="5, 5" 
                     FontSize="14" 
                     Foreground="Black" Background="Silver"
@@ -95,7 +95,7 @@
 
             <DataGrid x:Name="GrdData"
                       AutoGenerateColumns="False" SelectionUnit="FullRow"
-                      GridLinesVisibility="Vertical"
+                      GridLinesVisibility="Vertical" IsReadOnly="True"
                       Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
                       ItemsSource="{Binding}" >
                 <DataGrid.Columns>

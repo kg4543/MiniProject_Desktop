@@ -1,43 +1,71 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace WpfSMSApp.View.Store
 {
-
-    public partial class AddStore : Page
+    
+    public partial class EditStore : Page
     {
-        public AddStore()
+        public EditStore()
         {
             InitializeComponent();
+        }
+
+        public int StoreID { get; set; }
+        private Model.Store CurrentStore { get; set; }
+
+        /// <summary>
+        /// 추가생성자
+        /// StoreList에서 storeId를 받아옴
+        /// </summary>
+        /// <param name="storeId"></param>
+        public EditStore(int storeId) : this()
+        {
+            StoreID = storeId; 
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
                 LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
                 TxtStoreID.Text = TxtStoreName.Text = TxtStoreLocation.Text = "";
+
+            try
+            {
+                //store테이블에서 내용읽음
+                CurrentStore = Logic.DataAcess.GetStores().Where(s => s.StoreID.Equals(StoreID)).FirstOrDefault();
+                TxtStoreID.Text = CurrentStore.StoreID.ToString();
+                TxtStoreName.Text = CurrentStore.StoreName;
+                TxtStoreLocation.Text = CurrentStore.StoreLocation;
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"EditStore.xaml.cs Page_Loaded 예외발생 : {ex}");
+                Commons.ShowMessageAsync("예외",$"예외발생 : {ex}");
+            }
         }
         
         private bool isValid = true; //입력된 값이 모두 만족하는지 판별하는 플래그
-       
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             LblStoreName.Visibility = LblStoreLocation.Visibility = Visibility.Hidden;
-
-            var store = new Model.Store();
 
             isValid = IsValidInput(); // 유효성 체크
 
             if (isValid)
             {
-                store.StoreName = TxtStoreName.Text;
-                store.StoreLocation = TxtStoreLocation.Text;
+                CurrentStore.StoreName = TxtStoreName.Text;
+                CurrentStore.StoreLocation = TxtStoreLocation.Text;
 
                 try
                 {
-                    var result = Logic.DataAcess.SetStore(store);
+                    var result = Logic.DataAcess.SetStore(CurrentStore);
                     if (result == 0)
                     {
                         Commons.LOGGER.Error("AddStore.xaml.cs 창고정보 저장오류 발생");
@@ -71,7 +99,7 @@ namespace WpfSMSApp.View.Store
                 LblStoreName.Text = "창고명을 입력하세요";
                 isValid = false;
             }
-            else
+            /*else
             {
                 var cnt = Logic.DataAcess.GetStores().Where(u => u.StoreName.Equals(TxtStoreName.Text)).Count();
                 if (cnt > 0)
@@ -80,7 +108,7 @@ namespace WpfSMSApp.View.Store
                     LblStoreName.Text = "이미 등록된 창고명입니다.";
                     isValid = false;
                 }
-            }
+            }*/
 
             if (string.IsNullOrEmpty(TxtStoreLocation.Text))
             {

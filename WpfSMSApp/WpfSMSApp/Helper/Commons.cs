@@ -56,5 +56,11 @@ namespace WpfSMSApp
         {
             return await ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync(title,message,style,null);   
         }
+
+        public static async Task<MessageDialogResult> ChoiceMessageAsync(
+            string title, string message, MessageDialogStyle style = MessageDialogStyle.AffirmativeAndNegative)
+        {
+            return await ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync(title, message, style, null);
+        }
     }
 }
