@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinPLM", "WinPLM\WinPLM.csproj", "{42B97975-218C-44C1-BCCD-AFD38D84224C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42B97975-218C-44C1-BCCD-AFD38D84224C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B97975-218C-44C1-BCCD-AFD38D84224C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B97975-218C-44C1-BCCD-AFD38D84224C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B97975-218C-44C1-BCCD-AFD38D84224C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C8D0E9E-90C5-4A4A-B2A7-958E36A34377}
+	EndGlobalSection
+EndGlobal
