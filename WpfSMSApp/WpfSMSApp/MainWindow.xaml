@@ -143,8 +143,14 @@
             </Button>
         </Grid>
         <Grid Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="864*"/>
+                <ColumnDefinition Width="185*"/>
+                <ColumnDefinition Width="143*"/>
+            </Grid.ColumnDefinitions>
             <Frame x:Name="ActiveControl" 
-                   NavigationUIVisibility="Hidden"/> <!-- 화면 전환 -->
+                   NavigationUIVisibility="Hidden" Grid.ColumnSpan="3"/>
+            <!-- 화면 전환 -->
         </Grid>
     </DockPanel>
 </mah:MetroWindow>

@@ -15,6 +15,7 @@ namespace WinPLM
     {
         string connString = "Data Source=127.0.0.1;Initial Catalog=ERP;User ID=sa;Password=mssql_p@ssw0rd!;";
         int i = 0; // 0 = item, 1 = Category, 2 = Brand, 3 = Part, 4 = Material;
+        int itemId = 0;
 
         public FormPLM()
         {
@@ -58,6 +59,7 @@ namespace WinPLM
         private void DgvData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var selData = DgvData.Rows[e.RowIndex].Cells;
+            itemId = (int)selData[0].Value;
         }
 
         // 데이터 로드
@@ -125,6 +127,20 @@ namespace WinPLM
             }
         }
 
-        
+        private void BtnBom_Click(object sender, EventArgs e)
+        {
+
+            if (i == 0 && itemId != 0)
+            {
+                FrmBOM frm = new FrmBOM();
+                frm.itemId = itemId;
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("ITEM을 선택하세요!!");
+            }
+            
+        }
     }
 }

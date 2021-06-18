@@ -113,12 +113,13 @@ namespace WinPLM
             this.BtnBom.TabIndex = 6;
             this.BtnBom.Text = "BOM";
             this.BtnBom.UseVisualStyleBackColor = true;
+            this.BtnBom.Click += new System.EventHandler(this.BtnBom_Click);
             // 
             // FormPLM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 440);
+            this.ClientSize = new System.Drawing.Size(531, 286);
             this.Controls.Add(this.BtnBom);
             this.Controls.Add(this.BtnMaterial);
             this.Controls.Add(this.BtnPart);
